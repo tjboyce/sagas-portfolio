@@ -15,6 +15,8 @@ class Project extends Component {
     render() {
         return (
             <div className="App">
+
+            
                 {JSON.stringify(this.props.projects)}
 
 
