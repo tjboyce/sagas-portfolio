@@ -2,15 +2,17 @@ const express = require('express');
 const pool = require('../modules/pool');
 
 const router = express.Router();
+const myPortfolio = [1, 2, 3];
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT id, "name", "description", "thumbnail", "website", "github", "date_completed", "tag_id" FROM projects';
+    const queryText = 'SELECT * FROM "projects"';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
-            console.log('Error completing SELECT plant query', err);
+            console.log('Error completing SELECT projects query', err);
             res.sendStatus(500);
         });
+        
 });
 
 module.exports=router; 
