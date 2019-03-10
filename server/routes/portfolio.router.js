@@ -5,7 +5,7 @@ const router = express.Router();
 const myPortfolio = [1, 2, 3];
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT *, "tags"."name" AS "tag_name","projects"."name" AS "project_name" FROM "projects" JOIN "tags" ON "projects"."tag_id" = "tags"."id"';
+    const queryText = 'SELECT * FROM "projects";'
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const projects = req.body;
+  
     const queryText = `INSERT INTO "projects" ("name", "description", "thumbnail", "website", "github", "date_completed", "tag_id")
                     VALUES ($1, $2, $3, $4, $5, $6, $7)`;
     const queryValues = [
@@ -26,7 +27,7 @@ router.post('/', (req, res) => {
         projects.website,
         projects.github,
         projects.date_completed,
-        projects.tag_id,
+        projects.tag,
     ];
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(201); })
@@ -36,4 +37,19 @@ router.post('/', (req, res) => {
         });
 });
 
+router.delete('/:id', (req, res) => {
+
+    console.log(req.params);
+
+    const queryText = 'DELETE FROM projects WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        .then(() => { res.sendStatus(200); })
+        .catch((err) => {
+            console.log('Error completing DELETE projects query', err);
+            res.sendStatus(500);
+        });
+});
+
 module.exports=router; 
+
+// "tags"."name" AS "tag_name", "projects"."name" AS "project_name" FROM "projects" JOIN "tags" ON "projects"."tag_id" = "tags"."id"';

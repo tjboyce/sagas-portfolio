@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../App/App.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 class Admin extends Component {
@@ -11,14 +11,13 @@ class Admin extends Component {
         website: '',
         description: '',
         thumbnail: '',
+        
     };
     onSubmit = () => {
         console.log('going to get projects');
         this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state });
     }
-    deleteButton = (projectId) => {
-        this.props.dispatch({ type: 'DELETE_PROJECT', payload: projectId });
-    }
+   
     componentDidMount() {
         this.getProjects();
     }
@@ -38,16 +37,28 @@ class Admin extends Component {
         console.log('going to get projects');
         this.props.dispatch({ type: 'FETCH_PROJECT' });
     }
+
+
     adminList() {
-        return this.props.projects.map(project =>
-            <tr key={project.id}>
-                <td> {project.name} </td>
-                <td> {project.description} </td>
-                <td><button onClick={() => this.deleteButton(project.id)} className="deleteButton">Delete</button></td>
+        
+        
+        return this.props.projects.map(projectto =>
+                <tr key={projectto.id}>
+                <td> {projectto.name} </td>
+                <td> {projectto.description}</td>
+                <td> <button onClick={this.onDelete(projectto.id)} className="deleteButton">Delete</button> </td>
             </tr>
         )
     }
+    onDelete = (id) => () => {
+        console.log('deleting id', id);
+        this.props.dispatch({ type: 'DELETE_PROJECT', payload: id });
+    }
+    
     render() {
+       
+        console.log('TONY', this.props.projects);
+        
         return (
             <div>
                 <div className="box">
@@ -57,13 +68,13 @@ class Admin extends Component {
                     <input type="text" placeholder="Name" value={this.state.name} onChange={this.onChange('name')} />
                     <input type="date" value={this.state.date} onChange={this.onChange('date_completed')} />
                     <select value={this.state.tag} onChange={this.onChange('tag')}>
-                        <option value="0">Add Technology</option>
-                        <option value="1">React</option>
-                        <option value="2">jQuery</option>
-                        <option value="3">Node</option>
-                        <option value="4">SQL</option>
-                        <option value="5">Redux</option>
-                        <option value="6">HTML</option>
+                        <option value="1">Add Technology</option>
+                        <option value="2">React</option>
+                        <option value="3">jQuery</option>
+                        <option value="4">Node</option>
+                        <option value="5">SQL</option>
+                        <option value="6">Redux</option>
+                        <option value="7">HTML</option>
                     </select><br />
                     <input type="text" placeholder="GitHub URL" value={this.state.git} onChange={this.onChange('github')} />
                     <input type="text" placeholder="Web URL" value={this.state.web} onChange={this.onChange('website')} />
@@ -75,7 +86,7 @@ class Admin extends Component {
                         <option >Bookstore</option>
                         <option >Calculator</option>
                     </select><br />
-                    <input type="text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
+                    <input className = "inputBox" type="text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
                     <button onClick={this.onSubmit}>Submit</button>
                 </div>
                 <table>
