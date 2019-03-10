@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AdminList from '../AdminList/AdminList';
+// import AdminList from '../AdminList/AdminList';
 
 
 
-const mapStateToProps = reduxState => ({
-    reduxState,
-});
+
 
 class AdminForm extends Component {
 
@@ -54,7 +52,8 @@ class AdminForm extends Component {
 
         return (
             <div>
-                <Adminlist />
+                {/* <Adminlist /> */}
+                
                 <form onSubmit={this.addNewProject}>
                     <input placeholder="name" type='text' value={this.state.newProject.name} onChange={this.handleChangeFor('name')} />
                     <input placeholder="description" type='text' value={this.state.newProject.description} onChange={this.handleChangeFor('description')} />
@@ -71,6 +70,8 @@ class AdminForm extends Component {
     }
 }
 
-
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
 
 export default connect(mapStateToProps)(AdminForm);

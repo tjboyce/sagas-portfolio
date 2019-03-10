@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import Project from '../Project/Project'
+// import Project from '../Project/Project';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from '../Home/Home';
+import Admin from '../Admin/Admin';
 
 class App extends Component {
-  // Renders the entire app on the DOM
+
   render() {
     return (
-      <div className="App">
-        <header className= "App-header">
-          <h1>Tj Boyce</h1>
-          <img src= "images/tj1.jpg"/>
-      </header>
+      <Router>
+        <div className="App">
 
-      <div>
-        <Project />
-      </div>
-        
+          <div>
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/" component={Home} />
 
-      </div>
+          </div>
+
+        </div>
+      </Router>
+
     );
   }
 }

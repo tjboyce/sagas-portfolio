@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = reduxState => ({
-    reduxState,
-});
+
 
 class AdminList extends Component {
 
@@ -13,7 +11,7 @@ class AdminList extends Component {
     render() {
         return (
             <div>
-
+                <h4>will display list here</h4>
                 
 
             </div>
@@ -22,7 +20,9 @@ class AdminList extends Component {
 }
 
 
-
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
 
 
 
