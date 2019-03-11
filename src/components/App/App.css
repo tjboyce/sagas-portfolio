@@ -2,7 +2,10 @@
   text-align: center;
 }
 
-
+/* body{
+  background-image: url('/images/background.jpg');
+  background-size: cover; 
+} */
 .App-header {
   background-color: #222;
   height: 100px;
@@ -26,4 +29,9 @@
 .inputBox {
   height: 80px;
   width: 320px;
+}
+.flex-container{
+ 
+  display: flex;
+
 }

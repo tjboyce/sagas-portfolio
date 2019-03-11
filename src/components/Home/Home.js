@@ -18,7 +18,7 @@ class Home extends Component {
                 </div>
                 <div>
                     <Project />
-                    <h1>HOME</h1>
+               
                 </div>
 
             </div>
