@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 // import Project from '../Project/Project';
+import Linkify from 'react-linkify';
 
 const styles = {
     card: {
@@ -57,7 +58,7 @@ class ProjectCard extends Component {
                         </Typography>
                         
                         <Typography component="p">
-                            Github: {this.props.projectGithub}
+                           <Linkify>Github: {this.props.projectGithub}</Linkify>
                         </Typography>
                         
                         <Typography component="p">
