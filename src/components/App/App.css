@@ -2,10 +2,9 @@
   text-align: center;
 }
 
-/* body{
-  background-image: url('/images/background.jpg');
-  background-size: cover; 
-} */
+body{
+  background-color: grey;
+}
 .App-header {
   background-color: #222;
   height: 100px;
@@ -33,5 +32,23 @@
 .flex-container{
  
   display: flex;
+  margin-top: 140px;
 
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 40px;
+
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

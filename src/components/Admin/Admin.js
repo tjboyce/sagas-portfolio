@@ -57,13 +57,13 @@ class Admin extends Component {
     
     render() {
        
-        console.log('TONY', this.props.projects);
+        console.log( this.props.projects);
         
         return (
             <div>
                 <div className="box">
-                    <h1>Admin</h1>
-                    <Link to="/">Home</Link>
+                    <h1>Admin Page</h1>
+                    <Link to="/">Back to Project</Link>
                     <h2>Add New Project</h2>
                     <input type="text" placeholder="Name" value={this.state.name} onChange={this.onChange('name')} />
                     <input type="date" value={this.state.date} onChange={this.onChange('date_completed')} />
@@ -83,13 +83,20 @@ class Admin extends Component {
                         <option >Garden</option>
                         <option>Dog Gallery</option>
                         <option >Feedback</option>
-                        <option >Bookstore</option>
-                        <option >Calculator</option>
+                        <option >Pizza</option>
+                       
                     </select><br />
                     <input className = "inputBox" type="text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
                     <button onClick={this.onSubmit}>Submit</button>
                 </div>
                 <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {this.adminList()}
                     </tbody>

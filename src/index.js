@@ -33,6 +33,7 @@ function* postProject (action){
     try{
         yield axios.post('/portfolio', action.payload)
         yield dispatch ({type: 'FETCH_PROJECT'});
+        alert('Your project has been added')
     }
     catch (error){
         console.log('error with axios post request', error);
@@ -44,10 +45,12 @@ function* deleteProject(action) {
         console.log('action.payload');
         yield axios.delete('/portfolio/'+action.payload);
         yield dispatch({ type: 'FETCH_PROJECT' });
+        alert('Project Deleted');
     }
     catch (error) {
         console.log('error deleting', action, error);
     }
+
 }
 
 // Create sagaMiddleware
