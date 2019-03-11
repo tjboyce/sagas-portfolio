@@ -54,7 +54,7 @@ class ProjectCard extends Component {
                         </Typography>
                         
                         <Typography component="p">
-                            Website: {this.props.projectWebsite}
+                           <Linkify> Website: {this.props.projectWebsite}></Linkify>
                         </Typography>
                         
                         <Typography component="p">
